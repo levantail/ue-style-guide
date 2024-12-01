@@ -333,20 +333,12 @@ There are multiple ways to lay out the content of a UE project. In this style, w
         |-- <a href="#2.4">Maps</a>
         |   |-- Campaign1
         |   |-- Campaign2
-        |-- <a href="#2.8">MaterialLibrary</a>
+        |-- <a href="#2.8">Materials</a>
         |   |-- Debug
         |   |-- Metal
         |   |-- Paint
         |   |-- Utility
         |   |-- Weathering
-        |-- Placeables
-        |   |-- Pickups
-        |-- Weapons
-            |-- Common
-            |-- Pistols
-            |   |-- DesertEagle
-            |   |-- RocketPistol
-            |-- Rifles
 </pre>
 
 The reasons for this structure are listed in the following sub-sections.
@@ -409,13 +401,13 @@ After a migration, safe merging of assets can be done using the 'Replace Referen
 <a name="2.2.2e1"></a>
 ##### 2.2.2e1 Master Material Example
 
-For example, say you created a master material in one project that you would like to use in another project so you migrated that asset over. If this asset is not in a top level folder, it may have a name like `Content/MaterialLibrary/M_Master`. If the target project doesn't have a master material already, this should work without issue.
+For example, say you created a master material in one project that you would like to use in another project so you migrated that asset over. If this asset is not in a top level folder, it may have a name like `Content/Materials/M_Master`. If the target project doesn't have a master material already, this should work without issue.
 
 As work on one or both projects progress, their respective master materials may change to be tailored for their specific projects due to the course of normal development.
 
-The issue comes when, for example, an artist for one project created a nice generic modular set of static meshes and someone wants to include that set of static meshes in the second project. If the artist who created the assets used material instances based on `Content/MaterialLibrary/M_Master` as they're instructed to, when a migration is performed there is a great chance of conflict for the previously migrated `Content/MaterialLibrary/M_Master` asset.
+The issue comes when, for example, an artist for one project created a nice generic modular set of static meshes and someone wants to include that set of static meshes in the second project. If the artist who created the assets used material instances based on `Content/Materials/M_Master` as they're instructed to, when a migration is performed there is a great chance of conflict for the previously migrated `Content/Materials/M_Master` asset.
 
-This issue can be hard to predict and hard to account for. The person migrating the static meshes may not be the same person who is familiar with the development of both project's master material, and they may not be even aware that the static meshes in question rely on material instances which then rely on the master material. The Migrate tool requires the entire chain of dependencies to work however, and so it will be forced to grab `Content/MaterialLibrary/M_Master` when it copies these assets to the other project and it will overwrite the existing asset.
+This issue can be hard to predict and hard to account for. The person migrating the static meshes may not be the same person who is familiar with the development of both project's master material, and they may not be even aware that the static meshes in question rely on material instances which then rely on the master material. The Migrate tool requires the entire chain of dependencies to work however, and so it will be forced to grab `Content/Materials/M_Master` when it copies these assets to the other project and it will overwrite the existing asset.
 
 It is at this point where if the master materials for both projects are incompatible in _any way_, you risk breaking possibly the entire material library for a project as well as any other dependencies that may have already been migrated, simply because assets were not stored in a top level folder. The simple migration of static meshes now becomes a very ugly task.
 
@@ -499,17 +491,17 @@ For example, animations that are shared across multiple characters should lay in
 
 <a name="2.8"></a>
 <a name="structure-material-library"></a>
-### 2.8 `MaterialLibrary`
+### 2.8 `Materials`
 
 If your project makes use of master materials, layered materials, or any form of reusable materials or textures that do not belong to any subset of assets, these assets should be located in `Content/Project/MaterialLibrary`.
 
 This way all 'global' materials have a place to live and are easily located.
 
-> This also makes it incredibly easy to enforce a 'use material instances only' policy within a project. If all artists and assets should be using material instances, then the only regular material assets that should exist are within this folder. You can easily verify this by searching for base materials in any folder that isn't the `MaterialLibrary`.
+> This also makes it incredibly easy to enforce a 'use material instances only' policy within a project. If all artists and assets should be using material instances, then the only regular material assets that should exist are within this folder. You can easily verify this by searching for base materials in any folder that isn't the `Materials`.
 
-The `MaterialLibrary` doesn't have to consist of purely materials. Shared utility textures, material functions, and other things of this nature should be stored here as well within folders that designate their intended purpose. For example, generic noise textures should be located in `MaterialLibrary/Utility`.
+The `Materials` doesn't have to consist of purely materials. Shared utility textures, material functions, and other things of this nature should be stored here as well within folders that designate their intended purpose. For example, generic noise textures should be located in `Materials/Utility`.
 
-Any testing or debug materials should be within `MaterialLibrary/Debug`. This allows debug materials to be easily stripped from a project before shipping and makes it incredibly apparent if production assets are using them if reference errors are shown.
+Any testing or debug materials should be within `Materials/Debug`. This allows debug materials to be easily stripped from a project before shipping and makes it incredibly apparent if production assets are using them if reference errors are shown.
 
 <a name="2.9"></a>
 <a name="structure-no-empty-folders"></a>
