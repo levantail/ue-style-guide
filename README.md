@@ -326,8 +326,8 @@ There are multiple ways to lay out the content of a UE project. In this style, w
         |   |-- Interactables
         |   |-- Pickups
         |   |-- Weapons
-        |-- Effects
-        |   |-- Electrical
+        |-- VFX
+        |   |-- <Context> (Weather, Environment, etc.)
         |   |-- Fire
         |   |-- Weather
         |-- <a href="#2.4">Maps</a>
