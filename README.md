@@ -1280,24 +1280,7 @@ Every texture has a Texture Group property used for LODing, and this should be s
 **[⬆ Back to Top](#table-of-contents)**
 
 
-## Major Contributors
-
-* [Michael Allar](http://allarsblog.com): [GitHub](https://github.com/Allar), [Twitter](https://twitter.com/michaelallar)
-* [CosmoMyzrailGorynych](https://github.com/CosmoMyzrailGorynych)
-* [billymcguffin](https://github.com/billymcguffin)
-* [akenatsu](https://github.com/akenatsu)
-
 ## License
-
-Copyright (c) 2016 Gamemakin LLC
-
-See [LICENSE](/LICENSE)
-
-**[⬆ Back to Top](#table-of-contents)**
+MIT License
 
 
-## Amendments
-
-We encourage you to fork this guide and change the rules to fit your team's style guide. Below, you may list some amendments to the style guide. This allows you to periodically update your style guide without having to deal with merge conflicts.
-
-# };
